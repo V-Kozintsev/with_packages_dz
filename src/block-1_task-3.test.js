@@ -1,4 +1,3 @@
-// sumOfDigits.test.js
 import { sumOfDigits } from "./block-1_task-3";
 
 describe("сумма цифр 123 равна 6", () => {
