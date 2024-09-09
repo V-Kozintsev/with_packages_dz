@@ -12,6 +12,8 @@ export default [
         describe: "readonly",
         expect: "readonly",
         module: "writable",
+        global: "readonly", // Убедитесь, что это определено
+        jest: "readonly", // Убедитесь, что это определено
       },
     },
     plugins: {
