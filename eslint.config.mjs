@@ -14,6 +14,8 @@ export default [
         module: "writable",
         global: "readonly", // Убедитесь, что это определено
         jest: "readonly", // Убедитесь, что это определено
+        beforeEach: "readonly",
+        afterEach: "readonly",
       },
     },
     plugins: {
