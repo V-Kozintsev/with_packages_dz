@@ -5,7 +5,11 @@ export function sumNumber(sum) {
   console.log(sumResult);
 
   const newArrayNumber = arrayNumber.map((num) => num * 2);
-  return { sumResult, newArrayNumber };
+  const maxNum = Math.max(...arrayNumber);
+  const minNum = Math.min(...arrayNumber);
+  console.log(maxNum);
+  console.log(minNum);
+  return { sumResult, newArrayNumber, maxNum, minNum };
 }
 
 export { arrayNumber };
