@@ -1,4 +1,4 @@
-import { getDayOfWeek, minutesSinceStartOfDay } from "./block-4_test-15.js";
+import { getDayOfWeek, minutesSinceStartOfDay } from "./block-4_task-15.js";
 
 describe("Тест функции getDayOfWeek", () => {
   test("Проверка даты 25.12.2022", () => {
