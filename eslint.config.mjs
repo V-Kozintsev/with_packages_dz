@@ -16,6 +16,7 @@ export default [
         jest: "readonly", // Убедитесь, что это определено
         beforeEach: "readonly",
         afterEach: "readonly",
+        test: "readonly",
       },
     },
     plugins: {
