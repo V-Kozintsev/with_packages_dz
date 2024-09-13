@@ -1,28 +1,26 @@
 export function isRightTriangle(a, b, c) {
-  const sides = [a, b, c].sort((x, y) => x - y);
-  return (
-    Math.pow(sides[0], 2) + Math.pow(sides[1], 2) === Math.pow(sides[2], 2)
-  );
+  const sides = [a, b, c].sort((x, y) => x - y); // Сортируем стороны
+  return sides[0] ** 2 + sides[1] ** 2 === sides[2] ** 2; // Проверка по теореме Пифагора
 }
 
-// Функция для вычисления длины окружности и площади круга
-export function circleCalculations(R) {
-  const circumference = 2 * Math.PI * R;
-  const area = Math.PI * Math.pow(R, 2);
-  return { circumference, area };
+export function circleLength(R) {
+  return 2 * Math.PI * R; // Формула длины окружности
 }
 
-// Функция для нахождения корней квадратного уравнения
+export function circleArea(R) {
+  return Math.PI * R ** 2; // Формула площади круга
+}
+
 export function quadraticRoots(a, b, c) {
-  const discriminant = Math.pow(b, 2) - 4 * a * c;
-  if (discriminant > 0) {
-    const root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
-    const root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
-    return { root1, root2 };
-  } else if (discriminant === 0) {
+  const d = b * b - 4 * a * c; // Дискриминант
+  if (d < 0) {
+    return null; // Нет вещественных корней
+  } else if (d === 0) {
     const root = -b / (2 * a);
-    return { root };
+    return [root]; // Один корень
   } else {
-    return null;
+    const root1 = (-b + Math.sqrt(d)) / (2 * a);
+    const root2 = (-b - Math.sqrt(d)) / (2 * a);
+    return [root1, root2]; // Два корня
   }
 }

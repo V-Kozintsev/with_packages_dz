@@ -1,36 +1,24 @@
-import {
-  isRightTriangle,
-  circleCalculations,
-  quadraticRoots,
-} from "./block-4_task-16.js";
+// quadratic.test.js
+import { quadraticRoots } from "./block-4_task-16.js";
 
-// Пример 1: Проверка, является ли треугольник прямоугольным
-const a = prompt("Введите сторону a:");
-const b = prompt("Введите сторону b:");
-const c = prompt("Введите сторону c:");
-if (isRightTriangle(Number(a), Number(b), Number(c))) {
-  console.log("Треугольник является прямоугольным.");
-} else {
-  console.log("Треугольник не является прямоугольным.");
-}
+test("проверка корней квадратного уравнения", () => {
+  expect(quadraticRoots(1, -3, 2)).toEqual([2, 1]);
+  expect(quadraticRoots(1, 2, 1)).toEqual([-1]);
+  expect(quadraticRoots(1, 0, 1)).toBe(null);
+});
+// circle.test.js
+import { circleLength, circleArea } from "./block-4_task-16";
 
-// Пример 2: Вычисление длины окружности и площади круга
-const R = prompt("Введите радиус R:");
-const { circumference, area } = circleCalculations(Number(R));
-console.log(`Длина окружности: ${circumference}`);
-console.log(`Площадь круга: ${area}`);
+test("проверка длины окружности и площади круга", () => {
+  const R = 5;
+  expect(circleLength(R)).toBeCloseTo(31.42, 2);
+  expect(circleArea(R)).toBeCloseTo(78.54, 2);
+});
 
-// Пример 3: Нахождение корней квадратного уравнения
-const coeffA = prompt("Введите коэффициент a:");
-const coeffB = prompt("Введите коэффициент b:");
-const coeffC = prompt("Введите коэффициент c:");
-const roots = quadraticRoots(Number(coeffA), Number(coeffB), Number(coeffC));
-if (roots) {
-  if (roots.root1 && roots.root2) {
-    console.log(`Корни уравнения: ${roots.root1} и ${roots.root2}`);
-  } else {
-    console.log(`Корень уравнения: ${roots.root}`);
-  }
-} else {
-  console.log("Уравнение не имеет действительных корней.");
-}
+import { isRightTriangle } from "./block-4_task-16";
+
+test("проверка прямоугольного треугольника", () => {
+  expect(isRightTriangle(3, 4, 5)).toBe(true);
+  expect(isRightTriangle(5, 12, 13)).toBe(true);
+  expect(isRightTriangle(1, 2, 3)).toBe(false);
+});
