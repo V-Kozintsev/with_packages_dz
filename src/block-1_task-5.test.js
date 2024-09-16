@@ -1,30 +1,39 @@
-import { getMonthName } from "./block-1_task-5";
+import { getMonthNameFromPrompt } from "./block-1_task-5";
 
-describe("getMonthName", () => {
-  it("должен возвращать январь для 1", () => {
-    expect(getMonthName(1)).toBe("январь");
+describe("getMonthNameFromPrompt", () => {
+  beforeEach(() => {
+    // Замена console.log для проверки вызовов
+    console.log = jest.fn();
+    // Замена prompt для передачи тестового значения
+    window.prompt = jest.fn();
+    console.error = jest.fn();
   });
 
-  it("должен возвращать март для 3", () => {
-    expect(getMonthName(3)).toBe("март");
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
-  it("должен возвращать декабрь для 12", () => {
-    expect(getMonthName(12)).toBe("декабрь");
+  it('должен вернуть "январь" для ввода 1', () => {
+    window.prompt.mockReturnValue("1"); // Имитация ввода пользователя
+    getMonthNameFromPrompt();
+    expect(console.log).toHaveBeenCalledWith("Месяц: январь");
   });
 
-  it("должен выбросить ошибку для числа < 1", () => {
-    expect(() => getMonthName(0)).toThrow("Введите число от 1 до 12");
+  it('должен вернуть "февраль" для ввода 2', () => {
+    window.prompt.mockReturnValue("2");
+    getMonthNameFromPrompt();
+    expect(console.log).toHaveBeenCalledWith("Месяц: февраль");
   });
 
-  it("должен обрабатывать ввод через prompt", () => {
-    // Замокируем prompt в этом тесте
-    global.prompt = jest.fn(() => "3"); // Всегда возвращает число 3
+  it("должен вернуть ошибку для ввода 13", () => {
+    window.prompt.mockReturnValue("13");
+    getMonthNameFromPrompt();
+    expect(console.error).toHaveBeenCalledWith("Введите число от 1 до 12");
+  });
 
-    const monthNumber = parseInt(prompt(), 10);
-    expect(getMonthName(monthNumber)).toBe("март");
-
-    // Сбрасываем моки после использования
-    jest.resetAllMocks();
+  it("должен вернуть ошибку для ввода 0", () => {
+    window.prompt.mockReturnValue("0");
+    getMonthNameFromPrompt();
+    expect(console.error).toHaveBeenCalledWith("Введите число от 1 до 12");
   });
 });

@@ -1,4 +1,6 @@
-export function getMonthName(monthNumber) {
+export function getMonthNameFromPrompt() {
+  const monthNumber = parseInt(prompt("Введите номер месяца от 1 до 12:"));
+
   const months = [
     "",
     "январь",
@@ -16,8 +18,9 @@ export function getMonthName(monthNumber) {
   ];
 
   if (monthNumber < 1 || monthNumber > 12) {
-    throw new Error("Введите число от 1 до 12");
+    console.error("Введите число от 1 до 12");
+    return;
   }
 
-  return months[monthNumber];
+  console.log(`Месяц: ${months[monthNumber]}`);
 }
